@@ -32,10 +32,6 @@ def createBoat():
 def update():
     return render_template('boats_update.html')
 
-@app.route('/search')
-def search():
-    return render_template('boats_search.html')
-
 @app.route('/delete')
 def delete():
     return render_template('boats_delete.html')
