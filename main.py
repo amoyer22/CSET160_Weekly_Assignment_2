@@ -42,16 +42,15 @@ def search():
 def update():
     return render_template('boats_update.html')
 
-@app.route('/delete')
+@app.route('/delete', methods = ['GET', 'POST'])
 def delete():
-    message = ""
     if request.method == 'POST':
         boatID = request.form.get('id')
         if boatID:
             result = conn.execute(text("DELETE FROM boats WHERE id=:id"), {'id': boatID})
             conn.commit()
-            return render_template('boats_delete.html', message="Boat has been deleted.")
-    return render_template('boats_delete.html', message = message)
+            return render_template('boats_delete.html', message="Boat has been deleted." if result.rowcount > 0 else "Boat does not exist.")
+    return render_template('boats_delete.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
