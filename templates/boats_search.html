@@ -37,15 +37,17 @@
         <input type="submit" value="Submit" class="input_submit">
     </form>
     
-    <h2>Results</h2>
-    {% for boat in boats %}
-        <ul>
-            <li>{{boat[0]}}</li>
-            <li>{{boat[1]}}</li>
-            <li>{{boat[2]}}</li>
-            <li>{{boat[3]}}</li>
-            <li>{{boat[4]}}</li>
-        </ul>
-    {% endfor %}
+    {% if results %}
+        <h2>Results</h2>
+        {% for boat in boats %}
+            <ul>
+                <li>{{boat[0]}}</li>
+                <li>{{boat[1]}}</li>
+                <li>{{boat[2]}}</li>
+                <li>{{boat[3]}}</li>
+                <li>{{boat[4]}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}
