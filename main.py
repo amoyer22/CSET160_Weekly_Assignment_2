@@ -31,7 +31,7 @@ def createBoat():
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
     if request.method == 'POST':
-        conn.execute(text('SELECT * FROM boats WHERE id LIKE ?'), request.form)
+        conn.execute(text("SELECT * FROM boats WHERE id LIKE ?"), request.form).all()
     return render_template('boats_search.html', boats = boats)
 
 @app.route('/update')

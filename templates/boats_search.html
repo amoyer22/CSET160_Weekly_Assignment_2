@@ -32,7 +32,7 @@
 {% block body %}
 <div class="body">
     <h1>Search in Boats Database</h1>
-    <form action="/search">
+    <form action="/search" method="POST">
         <input type="number" name="id" placeholder="ID" class="input_field"> <br>
         <input type="submit" value="Submit" class="input_submit">
     </form>
@@ -48,6 +48,8 @@
                 <li>{{boat[4]}}</li>
             </ul>
         {% endfor %}
+        {% else %}
+            <h3 style="color: red;">No results found.</h3>
     {% endif %}
 </div>
 {% endblock %}
