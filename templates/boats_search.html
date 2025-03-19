@@ -36,20 +36,19 @@
         <input type="number" name="id" placeholder="ID" class="input_field"> <br>
         <input type="submit" value="Submit" class="input_submit">
     </form>
-    
-    {% if results %}
-        <h2>Results</h2>
-        {% for boat in boats %}
-            <ul>
-                <li>{{boat[0]}}</li>
-                <li>{{boat[1]}}</li>
-                <li>{{boat[2]}}</li>
-                <li>{{boat[3]}}</li>
-                <li>{{boat[4]}}</li>
-            </ul>
+
+    {% if result %}
+        {% for boat in result %}
+        <ul>
+            <li>{{boat[0]}}</li>
+            <li>{{boat[1]}}</li>
+            <li>{{boat[2]}}</li>
+            <li>{{boat[3]}}</li>
+            <li>{{boat[4]}}</li>
+        </ul>
         {% endfor %}
         {% else %}
-            <h3 style="color: red;">No results found.</h3>
+            <h3>No results.</h3>
     {% endif %}
 </div>
 {% endblock %}
