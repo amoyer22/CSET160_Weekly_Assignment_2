@@ -36,5 +36,10 @@
         <input type="number" name="id" placeholder="ID" class="input_field"> <br>
         <input type="submit" value="Submit" class="input_submit">
     </form>
+
+    {% if message %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+
 </div>
 {% endblock %}

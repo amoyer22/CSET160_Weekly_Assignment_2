@@ -35,7 +35,7 @@ def search():
         boatID = request.form.get('id')
         if boatID:
             result = conn.execute(text("SELECT * FROM boats WHERE id=:id"), {'id': boatID}).all()
-    return render_template('boats_search.html', result=result)
+    return render_template('boats_search.html', result = result)
 
 
 @app.route('/update')
@@ -44,7 +44,14 @@ def update():
 
 @app.route('/delete')
 def delete():
-    return render_template('boats_delete.html')
+    message = ""
+    if request.method == 'POST':
+        boatID = request.form.get('id')
+        if boatID:
+            result = conn.execute(text("DELETE FROM boats WHERE id=:id"), {'id': boatID})
+            conn.commit()
+            return render_template('boats_delete.html', message="Boat has been deleted.")
+    return render_template('boats_delete.html', message = message)
 
 if __name__ == '__main__':
     app.run(debug=True)
