@@ -28,6 +28,11 @@ def createBoat():
     except:
         return render_template('boat_create.html', error = "Failed", success = None)
     
+@app.route('/search')
+def search():
+    boats = conn.execute(text('SELECT * FROM boats WHERE id="5"'), request.form)
+    return render_template('boats_search.html', boats = boats)
+
 @app.route('/update')
 def update():
     return render_template('boats_update.html')

@@ -32,9 +32,20 @@
 {% block body %}
 <div class="body">
     <h1>Search in Boats Database</h1>
-    <form action="/boatCreate" method="POST">
+    <form action="/search">
         <input type="number" name="id" placeholder="ID" class="input_field"> <br>
         <input type="submit" value="Submit" class="input_submit">
     </form>
+    
+    <h2>Results</h2>
+    {% for boat in boats %}
+        <ul>
+            <li>{{boat[0]}}</li>
+            <li>{{boat[1]}}</li>
+            <li>{{boat[2]}}</li>
+            <li>{{boat[3]}}</li>
+            <li>{{boat[4]}}</li>
+        </ul>
+    {% endfor %}
 </div>
 {% endblock %}
