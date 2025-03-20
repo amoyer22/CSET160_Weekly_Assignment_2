@@ -38,8 +38,19 @@ def search():
     return render_template('boats_search.html', result = result)
 
 
-@app.route('/update')
+@app.route('/update', methods = ['GET', 'POST'])
 def update():
+    if request.method == 'POST':
+        boatID = request.form.get('id')
+        name = request.form.get('name')
+        boat_type = request.form.get('type')
+        owner_id = request.form.get('owner_id')
+        rental_price = request.form.get('')
+        if boatID:
+            result = conn.execute(text("""UPDATE boats SET name=:name, type=:type, owner_id=:owner_id, rental_price=:rental_price WHERE id=:id"""),{
+                'id': boatID, 'name': name, 'type': boat_type, 'owner_id': owner_id, 'rental_price': rental_price})
+            conn.commit()
+            return render_template('boats_update.html', message="Boat updated." if result.rowcount > 0 else "Boat does not exist.")
     return render_template('boats_update.html')
 
 @app.route('/delete', methods = ['GET', 'POST'])
