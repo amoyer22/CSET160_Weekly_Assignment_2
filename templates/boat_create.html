@@ -31,16 +31,15 @@
 {% extends "base.html" %}
 {% block body %}
     <div class="body">
+        <h1>Create in Boats Database</h1>
         {% if error %}
-        <!-- If error is not none print error -->
             <h2 style="color:red;">{{error}}</h2>
         {% endif %}
         {% if success %}
-        <!-- If success is not none print success -->
             <h2 style="color:green;">{{success}}</h2>
         {% endif %}
 
-        <form action="/boatCreate" method="POST">
+        <form action="/create" method="POST">
             <input type="number" name="id" placeholder="ID" class="input_field"> <br>
             <input type="text" name="name" placeholder="Boat name" class="input_field"> <br>
             <input type="text" name="type" placeholder="Boat type" class="input_field"> <br>
